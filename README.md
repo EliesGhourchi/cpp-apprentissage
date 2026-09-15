@@ -9,9 +9,12 @@ Learning c/c++
 ## Build
 
 ```
-g++ .\00-atelier\hello.cpp -o hello2
+cmake -S cpp-apprentissage -B build
+cmake --build build
 ```
 
 ## Toolchain
 
 - g++ 16.1.0
+- CMake 4.4.3
+- Ninja 1.13.2
