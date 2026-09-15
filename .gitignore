@@ -3,3 +3,5 @@
 *.i
 *.s
 *.exe
+build/
+
