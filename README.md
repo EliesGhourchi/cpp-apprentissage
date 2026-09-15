@@ -9,7 +9,7 @@ Learning c/c++
 ## Build
 
 ```
-cmake -S .\00-atelier\CMakeLists.txt -B build
+cmake -S .\00-atelier\ -B build -G Ninja
 cmake --build build
 ```
 
