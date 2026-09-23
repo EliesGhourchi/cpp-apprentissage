@@ -1,0 +1,4 @@
+Rocfort;200;6;1;Earth
+Samu-Rai;70;9;4;Wind
+Judeau;160;8;2;Water
+Feubuleux;80;8;3;Fire
