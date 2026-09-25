@@ -1,6 +1,6 @@
 #include <random>
 #include <iostream>
-int rollDice(std::mt19937 engine, int sides){
+int rollDice(std::mt19937& engine, int sides){
 
     std::uniform_int_distribution<int> dice(1, sides);       // des entiers de 1 à 6, équiprobables
     return dice(engine);
