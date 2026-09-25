@@ -91,17 +91,13 @@ int main(){
     }
     else{
         std::string line;
-        std::cout << elementName(elementFromName("Earth")) << "\n";   // doit afficher Earth
-        std::cout << elementName(elementFromName("Banane")) << "\n";  // doit afficher None
+        std::vector<Character> TeamA;
         while(std::getline(file,line)){
-            std::vector<std::string> ligne = splitLine(line,';');
-            std::cout << ligne.size() << " champs : ";
-            // for (std::string mot : ligne){
-            //     std::cout << "[" << mot << "]";
-            // }
-            showInvoc(makeCharacter(ligne));
+            std::vector<std::string> fields = splitLine(line,';');
+            TeamA.push_back(makeCharacter(fields));
        }
 
+       showTeam(TeamA,"team a");
        
     }
 
