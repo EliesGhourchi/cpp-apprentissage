@@ -71,6 +71,64 @@ bool isAlive(const Character& character){
         return false;
     }
 }
+
+
+
+bool runDuel(Character first, Character second, std::mt19937& engine, bool showLog){
+    int turn = 1;
+    while (isAlive(first) and isAlive(second)){
+        if(showLog){
+            std::cout << "Tour : " << turn << "\n";
+        }
+        if(isAlive(first)){
+
+            if(showLog){
+                std::cout << first.name << " wins " << wins << " / " << fights
+          << " (" << 100.0 * wins / fights << "%) against " << second.name << "\n";
+
+            }
+            else{
+                attack(first,second,engine);
+            }
+        }
+        else{
+            break;
+        }
+
+        if(isAlive(second)){
+
+            if(showLog){
+                std::cout << first.name << " wins " << wins << " / " << fights
+          << " (" << 100.0 * wins / fights << "%) against " << second.name << "\n";
+
+            }
+            else{
+                attack(second,first,engine);
+            }
+        }
+        else{
+            break;
+        }
+        turn +=1;
+    }
+    
+        if(!isAlive(first)){
+
+            if(showLog){
+                std::cout << second.name << " est le vainqueur en " << turn-1 << " tours.\n";
+            }
+            return false;
+        }
+        else{
+            if(showLog){
+                std::cout << first.name << " est le vainqueur en " << turn-1 << " tours.\n";
+            }
+            return true;
+        }
+
+    
+}
+
 int main(){
     
     //equipe A
@@ -87,33 +145,20 @@ int main(){
 
     std::random_device seedSource;
     std::mt19937 engine(seedSource());
-    int turn = 1;
-    while(isAlive(feubuleux) and isAlive(rocfort)){
-        std::cout << "Tour : " << turn << "\n";
-        if(isAlive(feubuleux)){
-            std::cout <<"   feubuleux attaque rocfort, il inflige : " << attack(feubuleux,rocfort,engine) << "degats, rocfort a : "<< rocfort.hp << " point de vie \n";           
-        }
-        else{
-            break;
-        }
-       
-        if(isAlive(rocfort)){
-            std::cout <<"   rocfort attaque feubuleux, il inflige : " << attack(rocfort,feubuleux,engine) << " degats, feubuleux a : "<< feubuleux.hp << " point de vie \n";
-        }
-        else{   
-            break;
-        }
+    int i = 0;
+    int cptWinFirst =0;
+    bool firstWin = false;
+    int j =0;
+    for (j =0;j<5;j++ ){
+    for(i = 0; i<1000;i++){
         
-        turn +=1;
-    
+        firstWin = runDuel(feubuleux,feubuleux,engine,false);
+        if(firstWin){
+            cptWinFirst += 1;
+        }
     }
-
-        if(!isAlive(feubuleux)){
-            std::cout << "rocfort est le vainqueur en " << turn-1 << " tours.\n";            
-        }
-        else{
-            std::cout << "feubuleux est le vainqueur en " << turn-1 << " tours.\n";
-        }
+    }
+    std::cout << " first a gagnee " << cptWinFirst << " fois, et a perdu " << (j*1000) - cptWinFirst << "fois contre second\n";
 
 
 
