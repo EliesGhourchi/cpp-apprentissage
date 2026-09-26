@@ -83,9 +83,8 @@ bool runDuel(Character first, Character second, std::mt19937& engine, bool showL
         if(isAlive(first)){
 
             if(showLog){
-                std::cout << first.name << " wins " << wins << " / " << fights
-          << " (" << 100.0 * wins / fights << "%) against " << second.name << "\n";
-
+                std::cout << "  "<< first.name <<" attaque " << second.name << ", il inflige : " << 
+                attack(first,second,engine) << "degats, "<< second.name << " a : " << second.hp << " point de vie \n";
             }
             else{
                 attack(first,second,engine);
@@ -98,9 +97,8 @@ bool runDuel(Character first, Character second, std::mt19937& engine, bool showL
         if(isAlive(second)){
 
             if(showLog){
-                std::cout << first.name << " wins " << wins << " / " << fights
-          << " (" << 100.0 * wins / fights << "%) against " << second.name << "\n";
-
+                std::cout << "  "<< second.name <<" attaque " << first.name << ", il inflige : " << 
+                attack(second,first,engine) << "degats, "<< first.name << " a : " << first.hp << " point de vie \n";
             }
             else{
                 attack(second,first,engine);
@@ -159,6 +157,8 @@ int main(){
     }
     }
     std::cout << " first a gagnee " << cptWinFirst << " fois, et a perdu " << (j*1000) - cptWinFirst << "fois contre second\n";
+    std::cout << first.name << " wins " << wins << " / " << fights
+          << " (" << 100.0 * wins / fights << "%) against " << second.name << "\n";
 
 
 
