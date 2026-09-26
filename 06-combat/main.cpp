@@ -150,15 +150,14 @@ int main(){
     for (j =0;j<5;j++ ){
     for(i = 0; i<1000;i++){
         
-        firstWin = runDuel(feubuleux,feubuleux,engine,false);
+        firstWin = runDuel(feubuleux,samu_Rai,engine,false);
         if(firstWin){
             cptWinFirst += 1;
         }
     }
     }
-    std::cout << " first a gagnee " << cptWinFirst << " fois, et a perdu " << (j*1000) - cptWinFirst << "fois contre second\n";
-    std::cout << first.name << " wins " << wins << " / " << fights
-          << " (" << 100.0 * wins / fights << "%) against " << second.name << "\n";
+    std::cout << feubuleux.name << " wins " << cptWinFirst << " / " << j*i
+          << " (" << 100.0 * cptWinFirst / j*i << "%) against " << samu_Rai.name << "\n";
 
 
 
