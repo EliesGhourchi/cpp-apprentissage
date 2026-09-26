@@ -109,10 +109,10 @@ int main(){
     }
 
         if(!isAlive(feubuleux)){
-            std::cout << "rocfort est le vainqueur en " << turn << " tours.\n";            
+            std::cout << "rocfort est le vainqueur en " << turn-1 << " tours.\n";            
         }
         else{
-            std::cout << "feubuleux est le vainqueur en " << turn << " tours.\n";
+            std::cout << "feubuleux est le vainqueur en " << turn-1 << " tours.\n";
         }
 
 
