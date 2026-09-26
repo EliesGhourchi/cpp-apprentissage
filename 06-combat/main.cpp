@@ -157,7 +157,7 @@ int main(){
     }
     }
     std::cout << feubuleux.name << " wins " << cptWinFirst << " / " << j*i
-          << " (" << 100.0 * cptWinFirst / j*i << "%) against " << samu_Rai.name << "\n";
+          << " (" << 100.0 * cptWinFirst / (j*i) << "%) against " << samu_Rai.name << "\n";
 
 
 
