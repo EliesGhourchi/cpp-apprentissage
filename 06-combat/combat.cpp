@@ -4,6 +4,7 @@
 
 #include "character.h"
 #include "combat.h"
+#include <algorithm>
 
 // les règles
 
@@ -123,34 +124,41 @@ bool runTeamDuel(std::vector<Character> teamA, std::vector<Character> teamB,std:
         if(showLog){
             std::cout << "Tour : " << turn << "\n";
         }
-        for(Character& attaker : teamA){
-            if(isAlive(attaker)){
+        for(int i = 0; i<std::max((int) teamA.size(),(int) teamB.size()); i++){
+            if(i<=(int) teamA.size()){
                 cible = firstAliveIndex(teamB);
-                if(cible<0){
-                    break;
-                }
-                else{
-                    if(showLog){
-                        std::cout << "  "<< attaker.name <<" attaque " << teamB[cible].name << ", il inflige : " << 
-                        attack(attaker,teamB[cible],engine) << " degats, "<< teamB[cible].name << " a : " << teamB[cible].hp << " point de vie \n";
+                if(isAlive(teamA[i])){
+                    if(cible<0){
+                        break;
                     }
                     else{
-                        attack(attaker,teamB[cible],engine);
+                        if(showLog){
+                            std::cout << "  "<< teamA[i].name <<" attaque " << teamB[cible].name << ", il inflige : " << 
+                            attack(teamA[i],teamB[cible],engine) << " degats, "<< teamB[cible].name << " a : " << teamB[cible].hp << " point de vie \n";
+                        }
+                        else{
+                            attack(teamA[i],teamB[cible],engine);
+                        }
+                        
                     }
-                    
                 }
             }
-        }
-        for(Character& attaker : teamB){
-            if(isAlive(attaker)){
+
+            if(i<=(int) teamB.size()){
                 cible = firstAliveIndex(teamA);
-                if(cible<0){
-                    break;
-                }
-                else{
-                    if(showLog){
-                        std::cout << "  "<< attaker.name <<" attaque " << teamA[cible].name << ", il inflige : " << 
-                        attack(attaker,teamA[cible],engine) << " degats, "<< teamA[cible].name << " a : " << teamA[cible].hp << " point de vie \n";
+                if(isAlive(teamB[i])){
+                    cible = firstAliveIndex(teamA);
+                    if(cible<0){
+                        break;
+                    }
+                    else{
+                        if(showLog){
+                            std::cout << "  "<< teamB[i].name <<" attaque " << teamA[cible].name << ", il inflige : " << 
+                            attack(teamB[i],teamA[cible],engine) << " degats, "<< teamA[cible].name << " a : " << teamA[cible].hp << " point de vie \n";
+                        }
+                        else{
+                            attack(teamB[i],teamA[cible],engine);
+                        }
                     }
                 }
             }

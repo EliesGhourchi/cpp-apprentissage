@@ -29,26 +29,15 @@ int main(){
     for (j =0;j<5;j++ ){
         for(i = 0; i<1000;i++){
             
-            firstWin = runDuel(feubuleux,samu_Rai,engine,false);
+            firstWin = runTeamDuel(teamA,teamA,engine,false);
             if(firstWin){
                 cptWinFirst += 1;
             }
         }
     }
-    std::cout << feubuleux.name << " wins " << cptWinFirst << " / " << j*i
-          << " (" << 100.0 * cptWinFirst / (j*i) << "%) against " << samu_Rai.name << "\n\n\n";
+    std::cout <<"Team A wins " << cptWinFirst << " / " << j*i
+          << " (" << 100.0 * cptWinFirst / (j*i) << "%) against TeamB\n";
 
-    
-    std::cout << "teamA en vie : " << teamIsAlive(teamA) << " premier en vie : " << 
-        firstAliveIndex(teamA) << "\n";
-    
-    
-    std::cout << "teamA en vie : " << teamIsAlive(teamA) << " premier en vie : " << 
-        firstAliveIndex(teamA) << "\n\n\n";
-
-
-
-    runTeamDuel(teamA,teamB,engine,true);
 
     return 0;
 }
