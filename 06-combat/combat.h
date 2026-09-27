@@ -9,3 +9,9 @@ void applyDamage(Character& target, int amount);
 int computeDamage(const Character& attacker, std::mt19937& engine);
 int attack(const Character& attacker, Character& defender, std::mt19937& engine);
 bool runDuel(Character first, Character second, std::mt19937& engine, bool showLog);
+
+bool teamIsAlive(const std::vector<Character>& team);
+
+int firstAliveIndex(const std::vector<Character>& team);
+bool runTeamDuel(std::vector<Character> teamA, std::vector<Character> teamB,
+                 std::mt19937& engine, bool showLog);
